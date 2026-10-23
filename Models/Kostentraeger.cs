@@ -12,6 +12,11 @@ namespace Teilnehmerverwaltung.Models
         public string Name { get; set; }
         public string Ansprechpartner { get; set; }
         public string Telefon { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }
 

@@ -13,5 +13,10 @@ namespace Teilnehmerverwaltung.Models
         public DateTime Beginn { get; set; }
         public DateTime Ende { get; set; }
         public string Raum { get; set; }
+
+        public override string ToString()
+        {
+            return Bezeichnung;
+        }
     }
 }

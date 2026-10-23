@@ -15,6 +15,109 @@ namespace Teilnehmerverwaltung.Services
         public TeilnehmerVerwaltung()
         {
             TeilnehmerListe = new ObservableCollection<Teilnehmer>();
+
+            Umschulung nachtwache = new Umschulung
+            {
+                KursNr = 1,
+                Bezeichnung = "Nachtwache und Grenzsicherung",
+                Beginn = new DateTime(2025, 9, 1),
+                Ende = new DateTime(2027, 8, 31),
+                Raum = "Die Mauer"
+            };
+
+            Umschulung drachen = new Umschulung
+            {
+                KursNr = 2,
+                Bezeichnung = "Drachenaufzucht und Flugtechnik",
+                Beginn = new DateTime(2025, 9, 1),
+                Ende = new DateTime(2027, 8, 31),
+                Raum = "Drachenstein"
+            };
+
+            Umschulung weisseWanderer = new Umschulung
+            {
+                KursNr = 3,
+                Bezeichnung = "Armee der Weißen Wanderer",
+                Beginn = new DateTime(2025, 9, 1),
+                Ende = new DateTime(2027, 8, 31),
+                Raum = "Jenseits der Mauer"
+            };
+
+            Kostentraeger nachtkoenig = new Kostentraeger
+            {
+                Id = 1,
+                Name = "Armee der Toten",
+                Ansprechpartner = "Night King",
+                Telefon = "000-WINTER"
+            };
+
+            Kostentraeger drachenkoenigin = new Kostentraeger
+            {
+                Id = 2,
+                Name = "Haus Targaryen",
+                Ansprechpartner = "Daenerys Targaryen",
+                Telefon = "0800-DRACHE"
+            };
+
+            TeilnehmerListe.Add(new Teilnehmer
+            {
+                TeilnehmerNr = 1,
+                Vorname = "Jon",
+                Nachname = "Snow",
+                Geburtsdatum = new DateTime(1990, 1, 15),
+                Email = "jon.snow@nachtwache.de",
+                Status = "Aktiv",
+                Umschulung = nachtwache,
+                Kostentraeger = drachenkoenigin
+            });
+
+            TeilnehmerListe.Add(new Teilnehmer
+            {
+                TeilnehmerNr = 2,
+                Vorname = "Arya",
+                Nachname = "Stark",
+                Geburtsdatum = new DateTime(1998, 5, 22),
+                Email = "arya.stark@winterfell.de",
+                Status = "Aktiv",
+                Umschulung = drachen,
+                Kostentraeger = drachenkoenigin
+            });
+
+            TeilnehmerListe.Add(new Teilnehmer
+            {
+                TeilnehmerNr = 3,
+                Vorname = "Tyrion",
+                Nachname = "Lannister",
+                Geburtsdatum = new DateTime(1985, 11, 11),
+                Email = "tyrion.lannister@koenigsmund.de",
+                Status = "Aktiv",
+                Umschulung = drachen,
+                Kostentraeger = drachenkoenigin
+            });
+
+            TeilnehmerListe.Add(new Teilnehmer
+            {
+                TeilnehmerNr = 4,
+                Vorname = "Hodor",
+                Nachname = "Hodor",
+                Geburtsdatum = new DateTime(1988, 7, 7),
+                Email = "hodor@winterfell.de",
+                Status = "Aktiv",
+                Umschulung = nachtwache,
+                Kostentraeger = nachtkoenig
+            });
+
+            TeilnehmerListe.Add(new Teilnehmer
+            {
+                TeilnehmerNr = 5,
+                Vorname = "Night",
+                Nachname = "King",
+                Geburtsdatum = new DateTime(1000, 1, 1),
+                Email = "night.king@beyondthewall.de",
+                Status = "Aktiv",
+                Umschulung = weisseWanderer,
+                Kostentraeger = nachtkoenig
+            });
         }
     }
 }
