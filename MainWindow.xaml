@@ -5,8 +5,65 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Teilnehmerverwaltung"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Teilnehmerverwaltung" Height="600" Width="1000">
+    <Grid Margin="10">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+
+        <GroupBox Header="Teilnehmerliste"
+          Grid.Column="0"
+          Margin="5">
+
+            <DataGrid x:Name="dgTeilnehmer"/>
+
+        </GroupBox>
+
+        <GroupBox Header="Teilnehmerdetails"
+          Grid.Column="1"
+          Margin="5">
+
+            <StackPanel Margin="10">
+
+                <Label Content="Vorname"/>
+                <TextBox x:Name="txtVorname"/>
+
+                <Label Content="Nachname"/>
+                <TextBox x:Name="txtNachname"/>
+
+                <Label Content="Geburtsdatum"/>
+                <DatePicker x:Name="dpGeburtsdatum"/>
+
+                <Label Content="Email"/>
+                <TextBox x:Name="txtEmail"/>
+
+                <Label Content="Status"/>
+                <ComboBox x:Name="cbStatus"/>
+
+                <Label Content="Umschulung"/>
+                <ComboBox x:Name="cbUmschulung"/>
+
+                <Label Content="Kostenträger"/>
+                <ComboBox x:Name="cbKostentraeger"/>
+
+                <Button x:Name="btnNeu"
+        Content="Neu"
+        Margin="0,15,0,5"/>
+
+                <Button x:Name="btnSpeichern"
+        Content="Speichern"
+        Margin="0,5"/>
+
+                <Button x:Name="btnLoeschen"
+        Content="Löschen"
+        Margin="0,5"/>
+
+
+            </StackPanel>
+
+        </GroupBox>
+
     </Grid>
 </Window>
