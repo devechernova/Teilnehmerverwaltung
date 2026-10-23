@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Teilnehmerverwaltung.Services;
 
 namespace Teilnehmerverwaltung
 {
@@ -20,9 +21,16 @@ namespace Teilnehmerverwaltung
     /// </summary>
     public partial class MainWindow : Window
     {
+        private TeilnehmerVerwaltung verwaltung;
         public MainWindow()
         {
             InitializeComponent();
+
+            verwaltung = new TeilnehmerVerwaltung();
+
+            dgTeilnehmer.ItemsSource = verwaltung.TeilnehmerListe;
         }
+
     }
+
 }
