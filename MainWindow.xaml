@@ -69,11 +69,13 @@
 
                 <Button x:Name="btnNeu"
         Content="Neu"
-        Margin="0,15,0,5"/>
+        Margin="0,15,0,5"
+        Click="btnNeu_Click"/>
 
                 <Button x:Name="btnSpeichern"
         Content="Speichern"
-        Margin="0,5"/>
+        Margin="0,5"
+        Click="btnSpeichern_Click"/>
 
                 <Button x:Name="btnLoeschen"
         Content="Löschen"

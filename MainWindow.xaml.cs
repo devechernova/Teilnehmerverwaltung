@@ -58,6 +58,80 @@ namespace Teilnehmerverwaltung
                 cbKostentraeger.SelectedItem = teilnehmer.Kostentraeger;
             }
         }
+        private void btnNeu_Click(object sender, RoutedEventArgs e)
+        {
+            txtVorname.Clear();
+            txtNachname.Clear();
+            txtEmail.Clear();
+
+            dpGeburtsdatum.SelectedDate = null;
+
+            cbStatus.SelectedIndex = -1;
+            cbUmschulung.SelectedIndex = -1;
+            cbKostentraeger.SelectedIndex = -1;
+
+            dgTeilnehmer.SelectedItem = null;
+        }
+
+        private void btnSpeichern_Click(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtVorname.Text))
+            {
+                MessageBox.Show("Vorname ist erforderlich.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtNachname.Text))
+            {
+                MessageBox.Show("Nachname ist erforderlich.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtEmail.Text)
+                || !txtEmail.Text.Contains("@"))
+            {
+                MessageBox.Show("Bitte eine gültige E-Mail eingeben.");
+                return;
+            }
+
+            if (cbUmschulung.SelectedItem == null)
+            {
+                MessageBox.Show("Bitte eine Umschulung auswählen.");
+                return;
+            }
+
+            if (cbKostentraeger.SelectedItem == null)
+            {
+                MessageBox.Show("Bitte einen Kostenträger auswählen.");
+                return;
+            }
+
+            int neueNummer =
+                verwaltung.TeilnehmerListe.Max(t => t.TeilnehmerNr) + 1;
+
+            Teilnehmer neuerTeilnehmer = new Teilnehmer
+            {
+                TeilnehmerNr = neueNummer,
+                Vorname = txtVorname.Text,
+                Nachname = txtNachname.Text,
+                Email = txtEmail.Text,
+
+                Geburtsdatum =
+                    dpGeburtsdatum.SelectedDate ?? DateTime.Today,
+
+                Status = cbStatus.Text,
+
+                Umschulung =
+                    (Umschulung)cbUmschulung.SelectedItem,
+
+                Kostentraeger =
+                    (Kostentraeger)cbKostentraeger.SelectedItem
+            };
+
+            verwaltung.TeilnehmerListe.Add(neuerTeilnehmer);
+
+            MessageBox.Show("Teilnehmer wurde gespeichert.");
+        }
     }
 
 }
