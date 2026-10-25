@@ -11,10 +11,16 @@ namespace Teilnehmerverwaltung.Services
     public class TeilnehmerVerwaltung
     {
         public ObservableCollection<Teilnehmer> TeilnehmerListe { get; set; }
+        public List<Umschulung> Umschulungen { get; set; }
+        public List<Kostentraeger> KostentraegerListe { get; set; }
 
         public TeilnehmerVerwaltung()
         {
             TeilnehmerListe = new ObservableCollection<Teilnehmer>();
+
+            Umschulungen = new List<Umschulung>();
+
+            KostentraegerListe = new List<Kostentraeger>(); 
 
             Umschulung nachtwache = new Umschulung
             {
@@ -43,6 +49,10 @@ namespace Teilnehmerverwaltung.Services
                 Raum = "Jenseits der Mauer"
             };
 
+            Umschulungen.Add(nachtwache);
+            Umschulungen.Add(drachen);
+            Umschulungen.Add(weisseWanderer);
+
             Kostentraeger nachtkoenig = new Kostentraeger
             {
                 Id = 1,
@@ -58,6 +68,9 @@ namespace Teilnehmerverwaltung.Services
                 Ansprechpartner = "Daenerys Targaryen",
                 Telefon = "0800-DRACHE"
             };
+
+            KostentraegerListe.Add(nachtkoenig);
+            KostentraegerListe.Add(drachenkoenigin);
 
             TeilnehmerListe.Add(new Teilnehmer
             {

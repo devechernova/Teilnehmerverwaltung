@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -30,6 +31,14 @@ namespace Teilnehmerverwaltung
             verwaltung = new TeilnehmerVerwaltung();
 
             dgTeilnehmer.ItemsSource = verwaltung.TeilnehmerListe;
+
+            cbUmschulung.ItemsSource = verwaltung.Umschulungen;
+
+            cbKostentraeger.ItemsSource = verwaltung.KostentraegerListe;
+
+            cbStatus.Items.Add("Aktiv");
+            cbStatus.Items.Add("Pausiert");
+            cbStatus.Items.Add("Abgeschlossen");
         }
 
         private void dgTeilnehmer_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -41,6 +50,12 @@ namespace Teilnehmerverwaltung
                 txtEmail.Text = teilnehmer.Email;
 
                 dpGeburtsdatum.SelectedDate = teilnehmer.Geburtsdatum;
+
+                cbStatus.Text = teilnehmer.Status;
+
+                cbUmschulung.SelectedItem = teilnehmer.Umschulung;
+
+                cbKostentraeger.SelectedItem = teilnehmer.Kostentraeger;
             }
         }
     }
