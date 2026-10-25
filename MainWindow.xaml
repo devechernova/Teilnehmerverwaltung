@@ -79,7 +79,8 @@
 
                 <Button x:Name="btnLoeschen"
         Content="Löschen"
-        Margin="0,5"/>
+        Margin="0,5"
+        Click="btnLoeschen_Click"/>
 
 
             </StackPanel>

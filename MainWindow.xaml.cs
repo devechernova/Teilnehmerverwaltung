@@ -159,6 +159,42 @@ namespace Teilnehmerverwaltung
                 MessageBox.Show("Teilnehmer wurde gespeichert.");
             }
         }
+
+        private void btnLoeschen_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgTeilnehmer.SelectedItem == null)
+            {
+                MessageBox.Show("Bitte zuerst einen Teilnehmer auswählen.");
+                return;
+            }
+
+            Teilnehmer teilnehmer =
+                (Teilnehmer)dgTeilnehmer.SelectedItem;
+
+            MessageBoxResult ergebnis =
+                MessageBox.Show(
+                    $"Soll Teilnehmer {teilnehmer.Vorname} {teilnehmer.Nachname} wirklich gelöscht werden?",
+                    "Teilnehmer löschen",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Question);
+
+            if (ergebnis == MessageBoxResult.Yes)
+            {
+                verwaltung.TeilnehmerListe.Remove(teilnehmer);
+
+                MessageBox.Show("Teilnehmer wurde gelöscht.");
+
+                txtVorname.Clear();
+                txtNachname.Clear();
+                txtEmail.Clear();
+
+                dpGeburtsdatum.SelectedDate = null;
+
+                cbStatus.SelectedIndex = -1;
+                cbUmschulung.SelectedIndex = -1;
+                cbKostentraeger.SelectedIndex = -1;
+            }
+        }
     }
 
 }
