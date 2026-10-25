@@ -103,6 +103,9 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Resource Include="doc\Wireframe.png" />
+    <Resource Include="doc\UML_Klassendiagramm.png" />
+    <Resource Include="doc\ER_Diagramm.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
