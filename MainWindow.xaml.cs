@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Teilnehmerverwaltung.Models;
 using Teilnehmerverwaltung.Services;
 
 namespace Teilnehmerverwaltung
@@ -31,6 +32,17 @@ namespace Teilnehmerverwaltung
             dgTeilnehmer.ItemsSource = verwaltung.TeilnehmerListe;
         }
 
+        private void dgTeilnehmer_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dgTeilnehmer.SelectedItem is Teilnehmer teilnehmer)
+            {
+                txtVorname.Text = teilnehmer.Vorname;
+                txtNachname.Text = teilnehmer.Nachname;
+                txtEmail.Text = teilnehmer.Email;
+
+                dpGeburtsdatum.SelectedDate = teilnehmer.Geburtsdatum;
+            }
+        }
     }
 
 }

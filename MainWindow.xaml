@@ -17,8 +17,27 @@
           Grid.Column="0"
           Margin="5">
 
-            <DataGrid x:Name="dgTeilnehmer"/>
+            <DataGrid x:Name="dgTeilnehmer"
+          AutoGenerateColumns="False"
+          SelectionChanged="dgTeilnehmer_SelectionChanged">
 
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn
+            Header="Nr"
+            Binding="{Binding TeilnehmerNr}" />
+
+                    <DataGridTextColumn
+            Header="Vorname"
+            Binding="{Binding Vorname}" />
+
+                    <DataGridTextColumn
+            Header="Nachname"
+            Binding="{Binding Nachname}" />
+
+                </DataGrid.Columns>
+
+            </DataGrid>
         </GroupBox>
 
         <GroupBox Header="Teilnehmerdetails"
