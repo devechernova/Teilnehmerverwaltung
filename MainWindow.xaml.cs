@@ -70,7 +70,7 @@ namespace Teilnehmerverwaltung
             cbUmschulung.SelectedIndex = -1;
             cbKostentraeger.SelectedIndex = -1;
 
-            dgTeilnehmer.SelectedItem = null;
+            dgTeilnehmer.UnselectAll();
         }
 
         private void btnSpeichern_Click(object sender, RoutedEventArgs e)
@@ -106,31 +106,58 @@ namespace Teilnehmerverwaltung
                 return;
             }
 
-            int neueNummer =
-                verwaltung.TeilnehmerListe.Max(t => t.TeilnehmerNr) + 1;
-
-            Teilnehmer neuerTeilnehmer = new Teilnehmer
+            if (dgTeilnehmer.SelectedItem != null)
             {
-                TeilnehmerNr = neueNummer,
-                Vorname = txtVorname.Text,
-                Nachname = txtNachname.Text,
-                Email = txtEmail.Text,
+                Teilnehmer teilnehmer =
+                    (Teilnehmer)dgTeilnehmer.SelectedItem;
 
-                Geburtsdatum =
-                    dpGeburtsdatum.SelectedDate ?? DateTime.Today,
+                teilnehmer.Vorname = txtVorname.Text;
+                teilnehmer.Nachname = txtNachname.Text;
+                teilnehmer.Email = txtEmail.Text;
 
-                Status = cbStatus.Text,
+                teilnehmer.Geburtsdatum =
+                    dpGeburtsdatum.SelectedDate ?? DateTime.Today;
 
-                Umschulung =
-                    (Umschulung)cbUmschulung.SelectedItem,
+                teilnehmer.Status = cbStatus.Text;
 
-                Kostentraeger =
-                    (Kostentraeger)cbKostentraeger.SelectedItem
-            };
+                teilnehmer.Umschulung =
+                    (Umschulung)cbUmschulung.SelectedItem;
 
-            verwaltung.TeilnehmerListe.Add(neuerTeilnehmer);
+                teilnehmer.Kostentraeger =
+                    (Kostentraeger)cbKostentraeger.SelectedItem;
 
-            MessageBox.Show("Teilnehmer wurde gespeichert.");
+                dgTeilnehmer.Items.Refresh();
+
+                MessageBox.Show("Teilnehmer wurde aktualisiert.");
+            }
+            else
+            {
+                int neueNummer =
+                    verwaltung.TeilnehmerListe.Max(t => t.TeilnehmerNr) + 1;
+
+                Teilnehmer neuerTeilnehmer = new Teilnehmer
+                {
+                    TeilnehmerNr = neueNummer,
+                    Vorname = txtVorname.Text,
+                    Nachname = txtNachname.Text,
+                    Email = txtEmail.Text,
+
+                    Geburtsdatum =
+                        dpGeburtsdatum.SelectedDate ?? DateTime.Today,
+
+                    Status = cbStatus.Text,
+
+                    Umschulung =
+                        (Umschulung)cbUmschulung.SelectedItem,
+
+                    Kostentraeger =
+                        (Kostentraeger)cbKostentraeger.SelectedItem
+                };
+
+                verwaltung.TeilnehmerListe.Add(neuerTeilnehmer);
+
+                MessageBox.Show("Teilnehmer wurde gespeichert.");
+            }
         }
     }
 
